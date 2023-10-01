@@ -1,0 +1,122 @@
+@import "../../index.scss";
+
+.Item {
+  width: 80%;
+
+  margin: 0 10%;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  .Item__Left {
+    width: 50%;
+
+    text-align: center;
+
+    & > div > img {
+      max-width: 70%;
+    }
+
+    .Item__Left__Switcher {
+      width: 100%;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      & > img {
+        max-width: 20%;
+      }
+    }
+  }
+
+  .Item__Right {
+    width: 50%;
+
+    & > * {
+      margin: 2rem 0;
+    }
+
+    .Item__Right__Title {
+      width: 100%;
+
+      h2 {
+        font-size: 3rem;
+      }
+
+      p {
+        font-size: 1.5rem;
+
+        font-weight: bold;
+      }
+    }
+
+    .Item__Right__Sizes {
+      width: 100%;
+
+      button:first-child {
+        margin-right: 1rem;
+      }
+
+      button:last-child {
+        margin-left: 1rem;
+      }
+
+      button {
+        padding: 0.2rem 1rem;
+
+        background: transparent;
+
+        border: none;
+
+        color: grey;
+      }
+
+      .Item__Right__Sizes__ButtonActive {
+        border-bottom: 0.2rem solid $accent;
+
+        color: $accent;
+      }
+    }
+
+    .Item__Right__AddToCart {
+      width: 100%;
+
+      button {
+        width: 100%;
+
+        background-color: $primary;
+
+        color: $background;
+
+        font-size: 1.5rem;
+        font-weight: bold;
+
+        padding: 1rem;
+      }
+    }
+
+    .Item__Right__Dropdowns {
+      width: 100%;
+
+      .Item__Right__Dropdown {
+        width: 100%;
+
+        .Item__Right__Dropdown__Name {
+          width: 100%;
+
+          padding: 1rem 0;
+          margin: 1rem 0;
+
+          border-top: 0.1rem solid $accent;
+          border-bottom: 0.1rem solid $accent;
+
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,42 @@
+@import url("https://fonts.googleapis.com/css2?family=REM&display=swap");
+
+$text: #151313;
+$background: #ffffff;
+$primary: #000000;
+$secondary: #e7e4e4;
+$accent: #363030;
+
+body {
+  padding: 0;
+  margin: 0;
+
+  height: 100%;
+
+  background-color: $background;
+  color: $text;
+
+  font-family: "REM", sans-serif;
+
+  overflow-x: hidden;
+}
+
+#root {
+  height: 100vh;
+
+  & > div {
+    height: 100%;
+  }
+}
+
+* {
+  padding: 0;
+  margin: 0;
+
+  box-sizing: border-box;
+}
+
+button {
+  font-family: inherit;
+
+  cursor: pointer;
+}

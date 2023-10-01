@@ -1,0 +1,65 @@
+@import "../../index.scss";
+
+.Completion {
+  width: 80%;
+
+  margin: 2rem 10%;
+
+  text-align: center;
+
+  h1 {
+    font-size: 3rem;
+  }
+
+  p {
+    font-size: 1.5rem;
+    margin: 1rem 0;
+  }
+
+  .Completion__Connect {
+    width: 100%;
+
+    margin: 2rem 0;
+
+    h2 {
+      font-size: 2rem;
+    }
+
+    & > div {
+      font-size: 2rem;
+
+      a {
+        color: $text;
+
+        margin: 1rem;
+
+        transition: color 0.3s ease-in-out;
+
+        &:hover {
+          color: $accent;
+        }
+      }
+    }
+  }
+
+  .Completion__Button {
+    width: 100%;
+
+    margin: 1rem 0;
+
+    button {
+      width: 30%;
+
+      background-color: $primary;
+
+      color: $background;
+
+      font-size: 1.5rem;
+      font-weight: bold;
+
+      padding: 1rem;
+
+      margin: 1rem 0;
+    }
+  }
+}

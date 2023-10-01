@@ -1,0 +1,31 @@
+@import "../../../index.scss";
+
+.Catalogue__Item {
+  width: 25%;
+
+  margin: 0.5%;
+
+  cursor: pointer;
+
+  transition: box-shadow 0.3s ease-in-out;
+
+  & > img {
+    max-width: 100%;
+  }
+
+  & > h2 {
+    text-align: center;
+    font-size: 2rem;
+  }
+
+  & > p {
+    font-size: 1.5rem;
+
+    font-weight: bold;
+    text-align: center;
+  }
+
+  &:hover {
+    box-shadow: 0 0 20px rgba($accent, 0.2);
+  }
+}

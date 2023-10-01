@@ -1,0 +1,79 @@
+@import "../../index.scss";
+
+.Pay {
+  width: 80%;
+
+  margin: 2rem 10%;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  .Pay__Left {
+    width: 35%;
+
+    margin-right: 5%;
+
+    .Pay__Left__Items {
+      width: 100%;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .Pay__Left__Item {
+      width: 100%;
+
+      margin: 1rem 0;
+
+      padding: 1rem;
+
+      text-align: center;
+
+      img {
+        width: 100%;
+      }
+    }
+  }
+
+  .Pay__Right {
+    width: 45%;
+
+    margin-left: 5%;
+
+    .Pay__Right__Email {
+      width: 100%;
+    }
+
+    .Pay__Right__Card {
+      width: 100%;
+    }
+
+    .Pay__Right__Shipping {
+      width: 100%;
+    }
+
+    .Pay__Right__PayButton {
+      width: 100%;
+
+      background-color: $primary;
+
+      color: $background;
+
+      font-size: 1.5rem;
+      font-weight: bold;
+
+      padding: 1rem;
+
+      margin: 1rem 0;
+    }
+
+    .Pay__Right__Message {
+      margin: 1rem 0;
+      text-align: center;
+      color: red;
+    }
+  }
+}

@@ -1,0 +1,175 @@
+@import "../../index.scss";
+
+.CartSide {
+  position: fixed;
+  right: 0;
+  top: 0;
+
+  z-index: 1;
+
+  height: 100%;
+
+  background-color: white;
+
+  white-space: nowrap;
+
+  width: 0vw;
+
+  overflow-x: hidden;
+  word-wrap: normal;
+
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  flex-direction: column;
+
+  transition: width 0.3s ease-in-out;
+
+  .CartSide__Close {
+    position: absolute;
+
+    top: 1rem;
+    right: 1rem;
+
+    font-size: 5rem;
+
+    cursor: pointer;
+  }
+
+  .CartSide__Heading {
+    font-size: 4rem;
+
+    margin-top: 2rem;
+    margin-left: 2rem;
+  }
+
+  .CartSide__Items {
+    width: 95%;
+    margin: 0 2.5%;
+
+    max-height: 80%;
+
+    overflow-y: scroll;
+
+    margin-bottom: auto;
+
+    section {
+      width: 100%;
+
+      text-align: center;
+
+      margin-top: 2rem;
+    }
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
+
+    .CartSide__Item {
+      width: 100%;
+      margin: 1rem 0;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      gap: 1%;
+
+      border-top: 0.1rem solid $accent;
+      border-bottom: 0.1rem solid $accent;
+
+      .CartSide__Item__Image {
+        width: 33%;
+
+        img {
+          max-width: 100%;
+        }
+      }
+
+      .CartSide__Item__Details {
+        width: 50%;
+
+        padding: 1rem 0;
+
+        p {
+          margin: 0.5rem 0;
+        }
+
+        .CartSide__Item__Details__Buttons {
+          width: 100%;
+
+          display: flex;
+          align-items: center;
+          justify-content: center;
+
+          border: 0.1rem solid $accent;
+
+          button {
+            width: 40%;
+
+            border: none;
+
+            background: transparent;
+          }
+
+          p {
+            width: 20%;
+
+            text-align: center;
+          }
+        }
+      }
+
+      .CartSide__Item__Remove {
+        .CartSide__Item__Remove__Trash {
+          font-size: 1.2rem;
+
+          transition: all 0.3s ease-in-out;
+
+          color: $text;
+
+          cursor: pointer;
+
+          &:hover {
+            color: red;
+          }
+        }
+      }
+    }
+  }
+
+  .CartSide__Totals {
+    width: 95%;
+    margin: 0 2.5%;
+    margin-bottom: 0.6rem;
+
+    & > div {
+      width: 100%;
+
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      h2 {
+        font-size: 2rem;
+      }
+
+      p {
+        font-weight: bold;
+
+        font-size: 1.2rem;
+      }
+    }
+
+    button {
+      width: 100%;
+
+      color: $background;
+
+      font-size: 1.5rem;
+      font-weight: bold;
+
+      padding: 1rem;
+    }
+  }
+}
