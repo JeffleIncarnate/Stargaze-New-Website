@@ -1,6 +1,6 @@
 import "./navbar.scss";
 
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, useLocation } from "react-router-dom";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSearch, faCartShopping } from "@fortawesome/free-solid-svg-icons";
@@ -18,21 +18,46 @@ const Navbar = () => {
   const { getEntireCart } = useShoppingCart();
   const { width } = useWindowDimensions();
 
+  const location = useLocation();
+
   return (
     <>
       <Toaster />
-      <nav className="Navbar">
+      <nav
+        className="Navbar"
+        style={{ color: location.pathname === "/" ? "white" : "black" }}
+      >
         <div className="Navbar__Image">
           <img
-            src="/icons/black.svg"
+            src={
+              location.pathname === "/"
+                ? "/icons/logoWhitePng.png"
+                : "/icons/black.svg"
+            }
             alt="Stargaze Logo"
             onClick={() => navigate("/")}
+            draggable={false}
           />
         </div>
         <div className="Navbar__Links">
-          <Link to={"/catalogue"}>CATALOGUE</Link>
-          <Link to={"/collections"}>COLLECTIONS</Link>
-          <Link to={"/archive"}>ARCHIVE</Link>
+          <Link
+            style={{ color: location.pathname === "/" ? "white" : "black" }}
+            to={"/catalogue"}
+          >
+            CATALOGUE
+          </Link>
+          <Link
+            style={{ color: location.pathname === "/" ? "white" : "black" }}
+            to={"/collections"}
+          >
+            COLLECTIONS
+          </Link>
+          <Link
+            style={{ color: location.pathname === "/" ? "white" : "black" }}
+            to={"/archive"}
+          >
+            ARCHIVE
+          </Link>
         </div>
         <div className="Navbar__Icons">
           <FontAwesomeIcon onClick={() => notify()} icon={faSearch} />

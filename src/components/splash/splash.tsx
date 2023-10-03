@@ -1,10 +1,19 @@
 import "./splash.scss";
 
+import { useNavigate } from "react-router-dom";
+
+import Navbar from "../navbar/navbar";
+
 const Splash = () => {
+  const navigate = useNavigate();
+
   return (
-    <div className="Splash">
-      <button>SHOP NOW</button>
-    </div>
+    <>
+      <div className="Splash">
+        <Navbar />
+        <button onClick={() => navigate("/catalogue")}>SHOP NOW</button>
+      </div>
+    </>
   );
 };
 
