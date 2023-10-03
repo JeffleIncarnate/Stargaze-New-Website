@@ -94,12 +94,7 @@ const CartSideMenuItem = ({ item }: CartSideMenuItemProps) => {
     useShoppingCart();
 
   return (
-    <motion.div
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      transition={{ duration: 0.3 }}
-      className="CartSide__Item"
-    >
+    <div className="CartSide__Item">
       <div className="CartSide__Item__Image">
         <img src={items[item.id.toString() as keyof typeof items].img} alt="" />
       </div>
@@ -145,7 +140,7 @@ const CartSideMenuItem = ({ item }: CartSideMenuItemProps) => {
           className="CartSide__Item__Remove__Trash"
         />
       </div>
-    </motion.div>
+    </div>
   );
 };
 
