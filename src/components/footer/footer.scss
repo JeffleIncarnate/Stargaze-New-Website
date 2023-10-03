@@ -12,8 +12,7 @@
 
   gap: 3rem;
 
-  background-color: black;
-  color: $background;
+  color: $text;
 
   margin-top: auto;
 
@@ -40,7 +39,7 @@
     font-size: 1.2rem;
 
     * {
-      color: $background;
+      color: $text;
 
       text-decoration: none;
     }
