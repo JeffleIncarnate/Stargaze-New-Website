@@ -15,11 +15,37 @@
 
     cursor: pointer;
 
-    img {
+    .Navbar__Image__Big {
       width: 100%;
+
+      @media screen and (max-width: 600px) {
+        display: none;
+      }
+    }
+
+    .Navbar__Image__Small {
+      display: none;
+
+      width: 100%;
+
+      @media screen and (max-width: 600px) {
+        display: flex;
+      }
     }
 
     @media screen and (max-width: 1100px) {
+      width: 25%;
+    }
+
+    @media screen and (max-width: 850px) {
+      width: 35%;
+    }
+
+    @media screen and (max-width: 600px) {
+      width: 20%;
+    }
+
+    @media screen and (max-width: 500px) {
       width: 25%;
     }
   }
@@ -108,12 +134,18 @@
       @media screen and (max-width: 1100px) {
         font-size: 2.3rem;
       }
+
+      @media screen and (max-width: 700px) {
+        font-size: 1.9rem;
+      }
+
+      @media screen and (max-width: 500px) {
+        margin: 0 0.7rem;
+      }
     }
 
     *:hover {
       color: $accent;
-
-      transition: all 0.3s ease-in-out;
     }
 
     .Navbar__Icons__Cart {
@@ -147,5 +179,87 @@
         pointer-events: none;
       }
     }
+
+    .Navbar__Icons__Rectangles {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      gap: 0.5rem;
+
+      height: 50px;
+
+      display: none;
+
+      z-index: 2;
+
+      .Navbar__Icons__Rectangle__One {
+        width: 50px;
+        height: 4px;
+
+        background-color: $text;
+
+        position: relative;
+
+        transition: all 0.3s ease-in-out;
+
+        @media screen and (max-width: 700px) {
+          width: 40px;
+        }
+      }
+
+      .Navbar__Icons__Rectangle__Two {
+        width: 50px;
+        height: 4px;
+
+        background-color: $text;
+
+        position: relative;
+
+        transition: all 0.3s ease-in-out;
+
+        @media screen and (max-width: 700px) {
+          width: 40px;
+        }
+      }
+
+      @media screen and (max-width: 850px) {
+        display: flex;
+      }
+    }
+  }
+}
+
+.Navbar__Small {
+  width: 0vw;
+  height: 100vh;
+
+  position: absolute;
+  right: 0;
+  top: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+
+  word-wrap: normal;
+  white-space: nowrap;
+
+  z-index: 1;
+
+  overflow-x: hidden;
+
+  background-color: $text;
+
+  transition: all 0.3s ease-in-out;
+
+  * {
+    color: $background;
+
+    margin: 1rem 0;
+
+    font-size: 2rem;
+    text-decoration: none;
   }
 }
