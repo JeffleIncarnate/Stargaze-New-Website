@@ -3,29 +3,43 @@
 .Catalogue__Item {
   width: 25%;
 
+  min-width: 400px;
+
   margin: 0.5%;
 
   cursor: pointer;
 
   transition: box-shadow 0.3s ease-in-out;
 
-  & > img {
+  img {
     max-width: 100%;
   }
 
-  & > h2 {
+  h2 {
     text-align: center;
     font-size: 2rem;
   }
 
-  & > p {
+  p {
     font-size: 1.5rem;
 
-    font-weight: bold;
     text-align: center;
   }
 
   &:hover {
     box-shadow: 0 0 20px rgba($accent, 0.2);
+  }
+
+  // Responsiveness
+  @media screen and (max-width: 600px) {
+    h2 {
+      font-size: 1.8rem;
+    }
+
+    p {
+      font-size: 1.2rem;
+
+      text-align: center;
+    }
   }
 }
