@@ -197,7 +197,7 @@
         width: 50px;
         height: 4px;
 
-        background-color: $text;
+        background-color: $background;
 
         position: relative;
 
@@ -212,7 +212,7 @@
         width: 50px;
         height: 4px;
 
-        background-color: $text;
+        background-color: $background;
 
         position: relative;
 
@@ -234,7 +234,7 @@
   width: 0vw;
   height: 100vh;
 
-  position: absolute;
+  position: fixed;
   right: 0;
   top: 0;
 

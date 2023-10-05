@@ -101,16 +101,20 @@ const Navbar = () => {
               )[0];
 
               // @ts-ignore
-
               const rectTwo: HTMLElement = document.getElementsByClassName(
                 "Navbar__Icons__Rectangle__Two"
               )[0];
+
+              // @ts-ignore
+              const root: HTMLElement = document.getElementById("root");
 
               // @ts-ignore
               const nav: HTMLElement =
                 document.getElementsByClassName("Navbar__Small")[0];
 
               if (smallNavOpen) {
+                root.style.overflowY = "scroll";
+
                 rectOne.style.transform = "rotate(0deg)";
                 rectTwo.style.transform = "rotate(0deg)";
 
@@ -130,6 +134,8 @@ const Navbar = () => {
 
                 setSmallNavOpen(false);
               } else {
+                root.style.overflowY = "hidden";
+
                 rectOne.style.transform = "rotate(45deg)";
                 rectTwo.style.transform = "rotate(-45deg)";
 
@@ -145,8 +151,18 @@ const Navbar = () => {
               }
             }}
           >
-            <div className="Navbar__Icons__Rectangle__One"></div>
-            <div className="Navbar__Icons__Rectangle__Two"></div>
+            <div
+              style={{
+                backgroundColor: location.pathname === "/" ? "white" : "black",
+              }}
+              className="Navbar__Icons__Rectangle__One"
+            ></div>
+            <div
+              style={{
+                backgroundColor: location.pathname === "/" ? "white" : "black",
+              }}
+              className="Navbar__Icons__Rectangle__Two"
+            ></div>
           </div>
         </div>
       </nav>
