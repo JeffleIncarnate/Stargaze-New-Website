@@ -168,9 +168,36 @@ const Navbar = () => {
       </nav>
 
       <div className="Navbar__Small">
-        <Link to={"/catalogue"}>CATALOGUE</Link>
-        <Link to={"/collections"}>COLLECTIONS</Link>
-        <Link to={"/archive"}>ARCHIVE</Link>
+        <Link
+          onClick={() => {
+            // @ts-ignore
+            const root: HTMLElement = document.getElementById("root");
+            root.style.overflowY = "scroll";
+          }}
+          to={"/catalogue"}
+        >
+          CATALOGUE
+        </Link>
+        <Link
+          onClick={() => {
+            // @ts-ignore
+            const root: HTMLElement = document.getElementById("root");
+            root.style.overflowY = "scroll";
+          }}
+          to={"/collections"}
+        >
+          COLLECTIONS
+        </Link>
+        <Link
+          onClick={() => {
+            // @ts-ignore
+            const root: HTMLElement = document.getElementById("root");
+            root.style.overflowY = "scroll";
+          }}
+          to={"/archive"}
+        >
+          ARCHIVE
+        </Link>
       </div>
 
       <CartSideMenu />
