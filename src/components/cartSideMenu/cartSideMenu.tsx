@@ -52,9 +52,7 @@ const CartSideMenu = () => {
         <div className="CartSide__Items">
           <AnimatePresence>
             {cartContents.length !== 0 ? (
-              cartContents.map((item) => (
-                <CartSideMenuItem item={item} key={crypto.randomUUID()} />
-              ))
+              cartContents.map((item) => <CartSideMenuItem item={item} />)
             ) : (
               <section>Your cart is empty</section>
             )}
@@ -94,7 +92,12 @@ const CartSideMenuItem = ({ item }: CartSideMenuItemProps) => {
     useShoppingCart();
 
   return (
-    <div className="CartSide__Item">
+    <motion.div
+      className="CartSide__Item"
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+    >
       <div className="CartSide__Item__Image">
         <img src={items[item.id.toString() as keyof typeof items].img} alt="" />
       </div>
@@ -140,7 +143,7 @@ const CartSideMenuItem = ({ item }: CartSideMenuItemProps) => {
           className="CartSide__Item__Remove__Trash"
         />
       </div>
-    </div>
+    </motion.div>
   );
 };
 
