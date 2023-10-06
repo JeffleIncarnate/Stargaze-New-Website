@@ -40,21 +40,18 @@ const BigCart = () => {
               <BigCartItem item={item} key={crypto.randomUUID()} />
             ))}
 
-            <button className="Cart__ContinueShopping">
-              CONTINUE SHOPPING
-            </button>
+            <div className="Cart__ContinueShopping">
+              <button>CONTINUE SHOPPING</button>
+            </div>
 
             <div className="Cart__Subtotal">
               <h2>SUBTOTAL</h2>
               <h2>${getTotal()}.00 NZD</h2>
             </div>
 
-            <button
-              onClick={() => navigate("/checkout")}
-              className="Cart__Checkout"
-            >
-              CHECKOUT
-            </button>
+            <div className="Cart__Checkout">
+              <button onClick={() => navigate("/checkout")}>CHECKOUT</button>
+            </div>
           </>
         ) : (
           <div className="Cart__Empty">
