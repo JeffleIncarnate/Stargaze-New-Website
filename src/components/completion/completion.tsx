@@ -10,7 +10,7 @@ const Completion = () => {
   return (
     <main className="Completion">
       <h1>Thank you for shopping with us</h1>
-      <p>We've sent a copy of your receipt to your inbox</p>
+      <p>Want to stargaze some more?</p>
 
       <div className="Completion__Connect">
         <h2>Connect with us!</h2>

@@ -64,8 +64,10 @@ const CheckoutForm = () => {
           ))}
         </div>
 
-        <h2>Shipping: FREE</h2>
-        <h2>Total Cost Inc GST: ${totalCost}</h2>
+        <div className="Pay__Left__Titles">
+          <h2>Shipping: FREE</h2>
+          <h2>Total Cost Inc GST: ${totalCost}</h2>
+        </div>
       </motion.div>
 
       <motion.form
@@ -106,10 +108,17 @@ interface ICheckoutFormItem {
 const CheckoutFormItem = ({ item }: ICheckoutFormItem) => {
   return (
     <div className="Pay__Left__Item">
-      <img src={items[item.id.toString() as keyof typeof items].img} alt="" />
-      <h2>{items[item.id.toString() as keyof typeof items].name}</h2>
-      <p>Quantity: {item.quantity}</p>
-      <p>{item.size.charAt(0).toUpperCase() + item.size.slice(1)}</p>
+      <div className="Pay__Left__Item__Image">
+        <img src={items[item.id.toString() as keyof typeof items].img} alt="" />
+        <div>
+          <p>{item.quantity}</p>
+        </div>
+      </div>
+
+      <div>
+        <h2>{items[item.id.toString() as keyof typeof items].name}</h2>
+        <p>{item.size.charAt(0).toUpperCase() + item.size.slice(1)}</p>
+      </div>
     </div>
   );
 };

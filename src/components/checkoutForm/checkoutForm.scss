@@ -1,18 +1,32 @@
 @import "../../index.scss";
 
 .Pay {
-  width: 80%;
+  width: 90%;
 
-  margin: 2rem 10%;
+  margin: 2rem 5%;
 
   display: flex;
   align-items: center;
   justify-content: center;
+  gap: 2rem;
+
+  @media screen and (max-width: 700px) {
+    flex-direction: column;
+  }
 
   .Pay__Left {
-    width: 35%;
+    width: 40%;
 
-    margin-right: 5%;
+    @media screen and (max-width: 700px) {
+      width: 80%;
+    }
+
+    .Pay__Left__Titles {
+      margin: 1.5rem 0;
+      h2 {
+        margin: 1rem 0;
+      }
+    }
 
     .Pay__Left__Items {
       width: 100%;
@@ -20,7 +34,7 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      flex-wrap: wrap;
+      flex-direction: column;
     }
 
     .Pay__Left__Item {
@@ -28,20 +42,80 @@
 
       margin: 1rem 0;
 
-      padding: 1rem;
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
 
-      text-align: center;
+      gap: 2rem;
 
-      img {
-        width: 100%;
+      @media screen and (max-width: 911px) {
+        flex-direction: column;
+      }
+
+      .Pay__Left__Item__Image {
+        width: 10rem;
+        height: 10rem;
+
+        position: relative;
+
+        border: 0.2rem $text solid;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        @media screen and (max-width: 1044px) {
+          width: 7rem;
+          height: 7rem;
+        }
+
+        @media screen and (max-width: 700px) {
+          width: 10rem;
+          height: 10rem;
+        }
+
+        img {
+          max-width: 100%;
+        }
+
+        div {
+          position: absolute;
+          top: -1rem;
+          right: -1rem;
+
+          width: 2rem;
+          height: 2rem;
+
+          font-size: 1rem;
+
+          display: flex;
+          align-items: center;
+          justify-content: center;
+
+          border-radius: 50%;
+
+          background-color: $text;
+
+          p {
+            color: $background;
+          }
+        }
+      }
+
+      & > div:nth-child(2) {
+        @media screen and (max-width: 911px) {
+          text-align: center;
+        }
       }
     }
   }
 
   .Pay__Right {
-    width: 45%;
+    width: 60%;
 
-    margin-left: 5%;
+    @media screen and (max-width: 700px) {
+      width: 80%;
+    }
 
     .Pay__Right__Email {
       width: 100%;
