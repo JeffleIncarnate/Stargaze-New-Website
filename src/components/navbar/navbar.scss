@@ -80,26 +80,6 @@
         display: none;
       }
     }
-
-    a::after {
-      content: "";
-
-      height: 0.2rem;
-      width: 0%;
-
-      background-color: $text;
-      transition: all 0.3s ease-in-out;
-    }
-
-    a:hover {
-      color: $accent;
-    }
-
-    a:hover::after {
-      width: 100%;
-
-      background-color: $accent;
-    }
   }
 
   .Navbar__Icons {
@@ -142,10 +122,6 @@
       @media screen and (max-width: 500px) {
         margin: 0 0.7rem;
       }
-    }
-
-    *:hover {
-      color: $accent;
     }
 
     .Navbar__Icons__Cart {

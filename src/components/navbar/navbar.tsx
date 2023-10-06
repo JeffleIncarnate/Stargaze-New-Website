@@ -89,7 +89,14 @@ const Navbar = () => {
             }}
           >
             <FontAwesomeIcon icon={faCartShopping} />
-            <div>{getEntireCart().length}</div>
+            <div
+              style={{
+                backgroundColor: location.pathname === "/" ? "white" : "black",
+                color: location.pathname === "/" ? "black" : "white",
+              }}
+            >
+              {getEntireCart().length}
+            </div>
           </span>
 
           <div
