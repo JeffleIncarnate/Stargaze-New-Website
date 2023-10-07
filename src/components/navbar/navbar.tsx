@@ -77,14 +77,17 @@ const Navbar = () => {
           <span
             className="Navbar__Icons__Cart"
             onClick={() => {
-              const cart = document.getElementsByClassName("CartSide");
+              // @ts-ignore
+              const cart: HTMLElement[] =
+                document.getElementsByClassName("CartSide");
+              // @ts-ignore
+              const root: HTMLElement = document.getElementById("root");
 
-              if (width < 1300 && width > 850) {
-                (cart[0]! as any).style.width = "40vw";
-              } else if (width < 850) {
-                (cart[0]! as any).style.width = "100vw";
+              if (width > 800) {
+                cart[0].style.width = "35rem";
               } else {
-                (cart[0]! as any).style.width = "30vw";
+                cart[0].style.width = "100vw";
+                root.style.overflowY = "hidden";
               }
             }}
           >
@@ -146,8 +149,8 @@ const Navbar = () => {
                 rectOne.style.transform = "rotate(45deg)";
                 rectTwo.style.transform = "rotate(-45deg)";
 
-                rectOne.style.top = "0.42rem";
-                rectTwo.style.bottom = "0.42rem";
+                rectOne.style.top = "0.4rem";
+                rectTwo.style.bottom = "0.4rem";
 
                 rectOne.style.backgroundColor = "white";
                 rectTwo.style.backgroundColor = "white";

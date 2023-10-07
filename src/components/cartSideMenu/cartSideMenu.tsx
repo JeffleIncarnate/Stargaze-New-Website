@@ -39,9 +39,15 @@ const CartSideMenu = () => {
           transition={{ duration: 0.2 }}
           className="CartSide__Close"
           onClick={() => {
-            const cart = document.getElementsByClassName("CartSide");
+            // @ts-ignore
+            const cart: HTMLElement[] =
+              document.getElementsByClassName("CartSide");
 
-            (cart[0]! as any).style.width = "0vw";
+            // @ts-ignore
+            const root: HTMLElement = document.getElementById("root");
+
+            cart[0].style.width = "0vw";
+            root.style.overflowY = "scroll";
           }}
         >
           <FontAwesomeIcon icon={faXmark} />
