@@ -29,6 +29,7 @@ const Search = () => {
           type="text"
           value={q ?? ""}
           placeholder="SEARCH"
+          autoFocus
         />
         <FontAwesomeIcon
           className="Search__Container__Icon"
