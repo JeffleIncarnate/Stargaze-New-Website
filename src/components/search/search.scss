@@ -1,0 +1,47 @@
+@import "../../index.scss";
+
+.Search {
+  width: 80%;
+  margin: 0 10%;
+
+  height: 65%;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+
+  font-weight: bold;
+
+  .Search__Container {
+    width: 100%;
+    height: 3rem;
+
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+
+    border-bottom: 0.2rem solid $text;
+
+    input {
+      width: calc(100% - 5rem);
+      height: 100%;
+
+      padding: 1rem;
+
+      border: none;
+
+      font-size: 2rem;
+
+      &::placeholder {
+        color: $text;
+      }
+    }
+
+    .Search__Container__Icon {
+      font-size: 3rem;
+
+      width: 5rem;
+    }
+  }
+}

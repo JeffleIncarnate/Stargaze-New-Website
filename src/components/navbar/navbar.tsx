@@ -53,19 +53,19 @@ const Navbar = () => {
 
         <div className="Navbar__Links">
           <Link
-            style={{ color: location.pathname === "/" ? "white" : "black" }}
+            style={{ color: location.pathname === "/" ? "white" : "#151313" }}
             to={"/catalogue"}
           >
             CATALOGUE
           </Link>
           <Link
-            style={{ color: location.pathname === "/" ? "white" : "black" }}
+            style={{ color: location.pathname === "/" ? "white" : "#151313" }}
             to={"/collections"}
           >
             COLLECTIONS
           </Link>
           <Link
-            style={{ color: location.pathname === "/" ? "white" : "black" }}
+            style={{ color: location.pathname === "/" ? "white" : "#151313" }}
             to={"/archive"}
           >
             ARCHIVE
@@ -73,7 +73,10 @@ const Navbar = () => {
         </div>
 
         <div className="Navbar__Icons">
-          <FontAwesomeIcon icon={faSearch} />
+          <FontAwesomeIcon
+            icon={faSearch}
+            onClick={() => navigate("/search")}
+          />
           <span
             className="Navbar__Icons__Cart"
             onClick={() => {
@@ -94,8 +97,9 @@ const Navbar = () => {
             <FontAwesomeIcon icon={faCartShopping} />
             <div
               style={{
-                backgroundColor: location.pathname === "/" ? "white" : "black",
-                color: location.pathname === "/" ? "black" : "white",
+                backgroundColor:
+                  location.pathname === "/" ? "white" : "#151313",
+                color: location.pathname === "/" ? "#151313" : "white",
               }}
             >
               {getEntireCart().length}
@@ -163,13 +167,15 @@ const Navbar = () => {
           >
             <div
               style={{
-                backgroundColor: location.pathname === "/" ? "white" : "black",
+                backgroundColor:
+                  location.pathname === "/" ? "white" : "#151313",
               }}
               className="Navbar__Icons__Rectangle__One"
             ></div>
             <div
               style={{
-                backgroundColor: location.pathname === "/" ? "white" : "black",
+                backgroundColor:
+                  location.pathname === "/" ? "white" : "#151313",
               }}
               className="Navbar__Icons__Rectangle__Two"
             ></div>

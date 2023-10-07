@@ -12,6 +12,7 @@ import PageNotFound from "./pages/404";
 import CartPage from "./pages/cart";
 import CheckoutPage from "./pages/checkout";
 import CompletionPage from "./pages/completion";
+import SearchPage from "./pages/search";
 
 const App = () => {
   const location = useLocation();
@@ -29,6 +30,7 @@ const App = () => {
             <Route path="/cart" element={<CartPage />} />
             <Route path="/checkout" element={<CheckoutPage />} />
             <Route path="/completion" element={<CompletionPage />} />
+            <Route path="/search" element={<SearchPage />} />
             <Route path="/*" element={<PageNotFound />} />
           </Routes>
         </AnimatePresence>
