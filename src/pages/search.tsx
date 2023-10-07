@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 
-import Marquee from "react-fast-marquee";
+import Marquee from "../components/marquee/marquee";
 import Navbar from "../components/navbar/navbar";
 import Search from "../components/search/search";
 import Footer from "../components/footer/footer";
