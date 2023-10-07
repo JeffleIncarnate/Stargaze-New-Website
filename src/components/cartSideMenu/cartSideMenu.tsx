@@ -11,6 +11,7 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { CartItem, useShoppingCart } from "../../context/shoppingCartContext";
 import toast, { Toaster } from "react-hot-toast";
+import { formatCurrency } from "../../utils/formatCurrency";
 
 import { items } from "../../data/items";
 
@@ -69,7 +70,7 @@ const CartSideMenu = () => {
           {cartContents.length !== 0 && (
             <div>
               <h2>SUBTOTAL</h2>
-              <p>${getTotal()}.00 NZD</p>
+              <p>{formatCurrency(getTotal())}</p>
             </div>
           )}
 

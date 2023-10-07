@@ -12,6 +12,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlus, faMinus } from "@fortawesome/free-solid-svg-icons";
 import { useShoppingCart } from "../../context/shoppingCartContext";
 import toast, { Toaster } from "react-hot-toast";
+import { formatCurrency } from "../../utils/formatCurrency";
 
 interface Item {
   itemUuid: string;
@@ -133,7 +134,7 @@ const CatalogueItem = () => {
             <div className="Item__Right">
               <div className="Item__Right__Title">
                 <h2>{item.name}</h2>
-                <p>${item.price}.00 NZD</p>
+                <p>{formatCurrency(item.price)}</p>
               </div>
 
               <div className="Item__Right__Sizes">

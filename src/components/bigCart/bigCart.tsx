@@ -6,6 +6,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { items } from "../../data/items";
 import { faPlus, faMinus } from "@fortawesome/free-solid-svg-icons";
 import { useNavigate } from "react-router-dom";
+import { formatCurrency } from "../../utils/formatCurrency";
 
 const BigCart = () => {
   const { getEntireCart, getTotal } = useShoppingCart();
@@ -46,7 +47,7 @@ const BigCart = () => {
 
             <div className="Cart__Subtotal">
               <h2>SUBTOTAL</h2>
-              <h2>${getTotal()}.00 NZD</h2>
+              <h2>{formatCurrency(getTotal())}</h2>
             </div>
 
             <div className="Cart__Checkout">
@@ -89,7 +90,11 @@ const BigCartItem = ({ item }: BigCartItemProps) => {
       </div>
 
       <div className="Cart__Item__Price">
-        <p>${items[item.id.toString() as keyof typeof items].price}.00 NZD</p>
+        <p>
+          {formatCurrency(
+            items[item.id.toString() as keyof typeof items].price
+          )}
+        </p>
       </div>
 
       <div className="Cart__Item__Quantity">
@@ -114,10 +119,10 @@ const BigCartItem = ({ item }: BigCartItemProps) => {
 
       <div className="Cart__Item__Total">
         <p>
-          $
-          {item.quantity *
-            items[item.id.toString() as keyof typeof items].price}
-          .00 NZD
+          {formatCurrency(
+            item.quantity *
+              items[item.id.toString() as keyof typeof items].price
+          )}
         </p>
       </div>
     </motion.div>

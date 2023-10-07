@@ -9,7 +9,7 @@ import AnimatedPage from "../components/animatedPage/animatedPage";
 
 const CompletionPage = () => {
   useEffect(() => {
-    document.title;
+    document.title = "Complete | STRGZE";
   }, []);
 
   return (

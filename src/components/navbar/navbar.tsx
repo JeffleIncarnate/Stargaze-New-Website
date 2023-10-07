@@ -78,6 +78,9 @@ const Navbar = () => {
             onClick={() => navigate("/search")}
           />
           <span
+            style={{
+              display: location.pathname === "/checkout" ? "none" : "block",
+            }}
             className="Navbar__Icons__Cart"
             onClick={() => {
               // @ts-ignore

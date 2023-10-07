@@ -2,6 +2,7 @@ import "./item.scss";
 
 import { motion } from "framer-motion";
 import { useNavigate } from "react-router-dom";
+import { formatCurrency } from "../../../utils/formatCurrency";
 
 interface Props {
   itemUuid: string;
@@ -32,7 +33,7 @@ const Item = ({ itemUuid, name, price, img, index }: Props) => {
     >
       <img src={img} alt={`${name} shirt image`} />
       <h2>{name}</h2>
-      <p>${price}.00 NZD</p>
+      <p>{formatCurrency(price)}</p>
     </motion.div>
   );
 };

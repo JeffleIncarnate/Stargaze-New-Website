@@ -13,6 +13,7 @@ import { items } from "../../data/items";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCircleNotch } from "@fortawesome/free-solid-svg-icons/faCircleNotch";
 import { motion } from "framer-motion";
+import { formatCurrency } from "../../utils/formatCurrency";
 
 const CheckoutForm = () => {
   const stripe = useStripe();
@@ -66,7 +67,7 @@ const CheckoutForm = () => {
 
         <div className="Pay__Left__Titles">
           <h2>Shipping: FREE</h2>
-          <h2>Total Cost Inc GST: ${totalCost}</h2>
+          <h2>Total Cost Inc GST: {formatCurrency(totalCost)}</h2>
         </div>
       </motion.div>
 
