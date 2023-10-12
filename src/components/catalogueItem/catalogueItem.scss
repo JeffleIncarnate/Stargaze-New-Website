@@ -97,9 +97,22 @@
 
       display: flex;
       justify-content: flex-start;
+      align-items: center;
 
       @media screen and (max-width: 750px) {
         justify-content: center;
+      }
+
+      p {
+        font-size: 1srem;
+      }
+
+      p:first-child {
+        margin-right: 1rem;
+      }
+
+      p:last-child {
+        margin-left: 1rem;
       }
 
       button:first-child {

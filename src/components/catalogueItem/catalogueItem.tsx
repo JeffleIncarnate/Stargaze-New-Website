@@ -13,6 +13,7 @@ import { faPlus, faMinus } from "@fortawesome/free-solid-svg-icons";
 import { useShoppingCart } from "../../context/shoppingCartContext";
 import toast, { Toaster } from "react-hot-toast";
 import { formatCurrency } from "../../utils/formatCurrency";
+import { items } from "../../data/items";
 
 interface Item {
   itemUuid: string;
@@ -29,7 +30,7 @@ const notify = () =>
     position: "top-center",
   });
 
-const items = {
+const itemsInComponent = {
   "1": {
     itemUuid: "1",
     name: "CMWYSG TEE",
@@ -70,9 +71,9 @@ const CatalogueItem = () => {
       return navigate("/404");
     }
 
-    document.title = `${items[itemUuid].name} | STRGZE`;
+    document.title = `${itemsInComponent[itemUuid].name} | STRGZE`;
 
-    setItem(items[itemUuid]);
+    setItem(itemsInComponent[itemUuid]);
   }, []);
 
   return (
@@ -138,39 +139,53 @@ const CatalogueItem = () => {
               </div>
 
               <div className="Item__Right__Sizes">
-                <motion.button
-                  className={
-                    size === "small" ? "Item__Right__Sizes__ButtonActive" : ""
-                  }
-                  onClick={() => {
-                    setSize("small");
-                  }}
-                  whileTap={{ scale: 0.95 }}
-                >
-                  SMALL
-                </motion.button>
-                <motion.button
-                  className={
-                    size === "medium" ? "Item__Right__Sizes__ButtonActive" : ""
-                  }
-                  onClick={() => {
-                    setSize("medium");
-                  }}
-                  whileTap={{ scale: 0.95 }}
-                >
-                  MEDIUM
-                </motion.button>
-                <motion.button
-                  className={
-                    size === "large" ? "Item__Right__Sizes__ButtonActive" : ""
-                  }
-                  onClick={() => {
-                    setSize("large");
-                  }}
-                  whileTap={{ scale: 0.95 }}
-                >
-                  LARGE
-                </motion.button>
+                {items[item.itemUuid as keyof typeof items].stock.small ? (
+                  <motion.button
+                    className={
+                      size === "small" ? "Item__Right__Sizes__ButtonActive" : ""
+                    }
+                    onClick={() => {
+                      setSize("small");
+                    }}
+                    whileTap={{ scale: 0.95 }}
+                  >
+                    SMALL
+                  </motion.button>
+                ) : (
+                  <p>OUT OF STOCK</p>
+                )}
+                {items[item.itemUuid as keyof typeof items].stock.medium ? (
+                  <motion.button
+                    className={
+                      size === "medium"
+                        ? "Item__Right__Sizes__ButtonActive"
+                        : ""
+                    }
+                    onClick={() => {
+                      setSize("medium");
+                    }}
+                    whileTap={{ scale: 0.95 }}
+                  >
+                    MEDIUM
+                  </motion.button>
+                ) : (
+                  <p>OUT OF STOCK</p>
+                )}
+                {items[item.itemUuid as keyof typeof items].stock.large ? (
+                  <motion.button
+                    className={
+                      size === "large" ? "Item__Right__Sizes__ButtonActive" : ""
+                    }
+                    onClick={() => {
+                      setSize("large");
+                    }}
+                    whileTap={{ scale: 0.95 }}
+                  >
+                    LARGE
+                  </motion.button>
+                ) : (
+                  <p>OUT OF STOCK</p>
+                )}
               </div>
 
               <div className="Item__Right__AddToCart">

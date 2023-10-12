@@ -4,18 +4,7 @@ import { Route, Routes, useLocation } from "react-router-dom";
 import { AnimatePresence } from "framer-motion";
 import { ShoppingCartProvider } from "./context/shoppingCartContext";
 
-// Import Pages
-// import HomePage from "./pages/home";
-// import CollectionsPage from "./pages/collections";
-// import ArchivePage from "./pages/archive";
-// import CataloguePage from "./pages/catalogue";
-// import CatalogueItemPage from "./pages/catalogueItem";
-// import PageNotFound from "./pages/404";
-// import CartPage from "./pages/cart";
-// import CheckoutPage from "./pages/checkout";
-// import CompletionPage from "./pages/completion";
-// import SearchPage from "./pages/search";
-
+// Lazy load pages
 const HomePage = React.lazy(() => import("./pages/home"));
 const CollectionsPage = React.lazy(() => import("./pages/collections"));
 const ArchivePage = React.lazy(() => import("./pages/archive"));
