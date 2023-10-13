@@ -75,7 +75,14 @@ const CartSideMenu = () => {
           )}
 
           <button
-            onClick={() => navigate("/cart")}
+            onClick={() => {
+              // @ts-ignore
+              const root: HTMLElement = document.getElementById("root");
+
+              root.style.overflowY = "scroll";
+
+              navigate("/cart");
+            }}
             style={{
               backgroundColor: getTotal() !== 0 ? "black" : "grey",
               cursor: getTotal() !== 0 ? "pointer" : "not-allowed",
