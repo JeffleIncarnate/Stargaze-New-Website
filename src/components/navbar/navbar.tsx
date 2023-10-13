@@ -52,19 +52,26 @@ const Navbar = () => {
         </div>
 
         <div className="Navbar__Links">
-          <Link
+          <a
+            className="Navbar__Links__Link"
             style={{ color: location.pathname === "/" ? "white" : "#151313" }}
-            to={"/catalogue"}
+            onClick={() => {
+              if (location.pathname !== "/catalogue") {
+                navigate("/catalogue");
+              }
+            }}
           >
             CATALOGUE
-          </Link>
+          </a>
           <Link
+            className="Navbar__Links__Link"
             style={{ color: location.pathname === "/" ? "white" : "#151313" }}
             to={"/collections"}
           >
             COLLECTIONS
           </Link>
           <Link
+            className="Navbar__Links__Link"
             style={{ color: location.pathname === "/" ? "white" : "#151313" }}
             to={"/archive"}
           >

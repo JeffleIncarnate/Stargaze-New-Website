@@ -14,6 +14,7 @@
     width: 20%;
 
     cursor: pointer;
+    cursor: hand;
 
     .Navbar__Image__Big {
       width: 100%;
@@ -57,12 +58,15 @@
 
     transition: all 0.3s ease-in-out;
 
-    a {
+    .Navbar__Links__Link {
       font-size: 1.2rem;
 
       margin: 0 1rem;
 
       color: $text;
+
+      cursor: pointer;
+      cursor: hand;
 
       text-decoration: none;
       font-weight: bold;
