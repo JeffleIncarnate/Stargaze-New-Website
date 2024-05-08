@@ -7,7 +7,7 @@ let items = {
     img: "/shirts/cmwysg.png",
     stock: {
       small: false,
-      medium: true,
+      medium: false,
       large: false,
     },
   },
@@ -19,7 +19,7 @@ let items = {
     img: "/shirts/heart.png",
     stock: {
       small: false,
-      medium: true,
+      medium: false,
       large: false,
     },
   },

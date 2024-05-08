@@ -195,6 +195,20 @@ const CatalogueItem = () => {
                     notify();
                   }}
                   whileTap={{ scale: 0.98 }}
+                  disabled={
+                    !items[item.itemUuid as keyof typeof items].stock.large &&
+                    !items[item.itemUuid as keyof typeof items].stock.medium &&
+                    !items[item.itemUuid as keyof typeof items].stock.small
+                      ? true
+                      : true
+                  }
+                  style={
+                    !items[item.itemUuid as keyof typeof items].stock.large &&
+                    !items[item.itemUuid as keyof typeof items].stock.medium &&
+                    !items[item.itemUuid as keyof typeof items].stock.small
+                      ? { background: "grey", cursor: "not-allowed" }
+                      : {}
+                  }
                 >
                   ADD TO CART
                 </motion.button>
