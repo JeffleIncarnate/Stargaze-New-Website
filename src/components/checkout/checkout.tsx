@@ -8,7 +8,6 @@ import { useShoppingCart } from "../../context/shoppingCartContext";
 import { useNavigate } from "react-router-dom";
 import { HashLoader } from "react-spinners";
 import { motion } from "framer-motion";
-import ComingSoon from "../comingSoon/comingSoon";
 
 const Checkout = () => {
   const [stripePromise, setStripePromise] =

@@ -48,8 +48,10 @@ const CatalogueItem = () => {
   }, []);
 
   const returnColorFromUuid = (id: string, size: string) => {
-    if (ITEMS[id].type === "beanie") {
-      return ITEMS[id].color;
+    const item = ITEMS[id];
+
+    if (item.type === "beanie") {
+      return item.color;
     } else {
       return size;
     }
