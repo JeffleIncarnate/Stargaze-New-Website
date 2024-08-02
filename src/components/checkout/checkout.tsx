@@ -8,6 +8,7 @@ import { useShoppingCart } from "../../context/shoppingCartContext";
 import { useNavigate } from "react-router-dom";
 import { HashLoader } from "react-spinners";
 import { motion } from "framer-motion";
+import ComingSoon from "../comingSoon/comingSoon";
 
 const Checkout = () => {
   const [stripePromise, setStripePromise] =
@@ -39,6 +40,7 @@ const Checkout = () => {
     myHeaders.append("Content-Type", "application/json");
 
     var raw = JSON.stringify(getEntireCart());
+    console.log(raw);
 
     var requestOptions: RequestInit = {
       method: "POST",

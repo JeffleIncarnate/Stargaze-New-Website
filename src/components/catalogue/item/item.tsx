@@ -10,9 +10,19 @@ interface Props {
   price: number;
   img: string;
   index: number;
+  showOnShop: boolean;
+  isNew: boolean;
 }
 
-const Item = ({ itemUuid, name, price, img, index }: Props) => {
+const Item = ({
+  itemUuid,
+  name,
+  price,
+  img,
+  index,
+  isNew,
+  showOnShop,
+}: Props) => {
   const navigate = useNavigate();
 
   const handleClick = () => {
@@ -23,18 +33,27 @@ const Item = ({ itemUuid, name, price, img, index }: Props) => {
   };
 
   return (
-    <motion.div
-      className="Catalogue__Item"
-      initial={{ opacity: 0, y: 100 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.5 + index + 0.5 }}
-      whileTap={{ scale: 0.95 }}
-      onClick={handleClick}
-    >
-      <img src={img} alt={`${name} shirt image`} />
-      <h2>{name}</h2>
-      <p>{formatCurrency(price)}</p>
-    </motion.div>
+    <>
+      {showOnShop ? (
+        <motion.div
+          className="Catalogue__Item"
+          initial={{ opacity: 0, y: 100 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: (index + 1) / 2 }}
+          whileTap={{ scale: 0.95 }}
+          onClick={handleClick}
+        >
+          {isNew && (
+            <div className="Catalogue__Item__New">
+              <h3>NEW COLLECTION 🎉</h3>
+            </div>
+          )}
+          <img src={img} alt={`${name} shirt image`} />
+          <h2>{name}</h2>
+          <p>{formatCurrency(price)}</p>
+        </motion.div>
+      ) : null}
+    </>
   );
 };
 

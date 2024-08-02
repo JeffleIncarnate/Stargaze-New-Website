@@ -13,7 +13,7 @@ import { CartItem, useShoppingCart } from "../../context/shoppingCartContext";
 import toast, { Toaster } from "react-hot-toast";
 import { formatCurrency } from "../../utils/formatCurrency";
 
-import { items } from "../../data/items";
+import { ITEMS } from "../../data/items";
 
 const notify = () =>
   toast("Removed Item From Cart", {
@@ -59,7 +59,9 @@ const CartSideMenu = () => {
         <div className="CartSide__Items">
           <AnimatePresence>
             {cartContents.length !== 0 ? (
-              cartContents.map((item) => <CartSideMenuItem item={item} />)
+              cartContents.map((item) => (
+                <CartSideMenuItem item={item} key={crypto.randomUUID()} />
+              ))
             ) : (
               <section>Your cart is empty</section>
             )}
@@ -113,16 +115,14 @@ const CartSideMenuItem = ({ item }: CartSideMenuItemProps) => {
       exit={{ opacity: 0 }}
     >
       <div className="CartSide__Item__Image">
-        <img src={items[item.id.toString() as keyof typeof items].img} alt="" />
+        <img src={ITEMS[item.id.toString()].img} alt="" />
       </div>
 
       <div className="CartSide__Item__Details">
-        <h2>{items[item.id.toString() as keyof typeof items].name}</h2>
+        <h2>{ITEMS[item.id.toString()].name}</h2>
         <p>{item.size.charAt(0).toUpperCase() + item.size.slice(1)}</p>
         <p>
-          $
-          {item.quantity *
-            items[item.id.toString() as keyof typeof items].price}
+          ${item.quantity * ITEMS[item.id.toString()].price}
           .00 NZD
         </p>
 

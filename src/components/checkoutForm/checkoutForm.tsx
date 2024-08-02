@@ -9,7 +9,7 @@ import {
   LinkAuthenticationElement,
 } from "@stripe/react-stripe-js";
 import { CartItem, useShoppingCart } from "../../context/shoppingCartContext";
-import { items } from "../../data/items";
+import { ITEMS } from "../../data/items";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCircleNotch } from "@fortawesome/free-solid-svg-icons/faCircleNotch";
 import { motion } from "framer-motion";
@@ -49,7 +49,7 @@ const CheckoutForm = () => {
   };
 
   let totalCost = getTotal();
-  totalCost += totalCost * 0.15;
+  totalCost += 5;
 
   return (
     <main className="Pay">
@@ -61,12 +61,12 @@ const CheckoutForm = () => {
       >
         <div className="Pay__Left__Items">
           {getEntireCart().map((item) => (
-            <CheckoutFormItem item={item} />
+            <CheckoutFormItem item={item} key={crypto.randomUUID()} />
           ))}
         </div>
 
         <div className="Pay__Left__Titles">
-          <h2>Shipping: FREE</h2>
+          <h2>Shipping: $5</h2>
           <h2>Total Cost Inc GST: {formatCurrency(totalCost)}</h2>
         </div>
       </motion.div>
@@ -110,14 +110,14 @@ const CheckoutFormItem = ({ item }: ICheckoutFormItem) => {
   return (
     <div className="Pay__Left__Item">
       <div className="Pay__Left__Item__Image">
-        <img src={items[item.id.toString() as keyof typeof items].img} alt="" />
+        <img src={ITEMS[item.id.toString()].img} alt="" />
         <div>
           <p>{item.quantity}</p>
         </div>
       </div>
 
       <div>
-        <h2>{items[item.id.toString() as keyof typeof items].name}</h2>
+        <h2>{ITEMS[item.id.toString()].name}</h2>
         <p>{item.size.charAt(0).toUpperCase() + item.size.slice(1)}</p>
       </div>
     </div>

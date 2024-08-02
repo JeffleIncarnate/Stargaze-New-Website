@@ -1,6 +1,6 @@
 import { ReactNode, createContext, useContext, useState } from "react";
 
-import { items } from "../data/items";
+import { ITEMS } from "../data/items";
 
 interface ShoppingCartProviderProps {
   children: ReactNode;
@@ -89,9 +89,7 @@ export function ShoppingCartProvider({ children }: ShoppingCartProviderProps) {
     let total = 0;
 
     for (let i = 0; i < cartItems.length; i++) {
-      total +=
-        cartItems[i].quantity *
-        items[cartItems[i].id.toString() as keyof typeof items].price;
+      total += cartItems[i].quantity * ITEMS[cartItems[i].id.toString()].price;
     }
 
     return total;

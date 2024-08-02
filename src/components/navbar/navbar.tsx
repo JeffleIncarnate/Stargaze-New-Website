@@ -61,7 +61,7 @@ const Navbar = () => {
               }
             }}
           >
-            CATALOGUE
+            SHOP
           </a>
           <Link
             className="Navbar__Links__Link"

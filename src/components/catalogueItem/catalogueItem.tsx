@@ -2,27 +2,13 @@ import "./catalogueItem.scss";
 
 import { useEffect, useState } from "react";
 import { useSearchParams, useNavigate } from "react-router-dom";
-import {
-  CMWYSG_SHIRT,
-  HEART_SHIRT,
-  FRONT_OF_SHIRTS,
-} from "../../assets/__img__";
 import { motion, AnimatePresence } from "framer-motion";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlus, faMinus } from "@fortawesome/free-solid-svg-icons";
 import { useShoppingCart } from "../../context/shoppingCartContext";
 import toast, { Toaster } from "react-hot-toast";
 import { formatCurrency } from "../../utils/formatCurrency";
-import { items } from "../../data/items";
-
-interface Item {
-  itemUuid: string;
-  name: string;
-  price: number;
-  backOfShirt: string;
-  frontOfShirt: string;
-  description: string;
-}
+import { ItemBeanie, ItemShirt, ITEMS } from "../../data/items";
 
 const notify = () =>
   toast.success("Added Item To Cart", {
@@ -30,34 +16,13 @@ const notify = () =>
     position: "top-center",
   });
 
-const itemsInComponent = {
-  "1": {
-    itemUuid: "1",
-    name: "CMWYSG TEE",
-    price: 45,
-    backOfShirt: CMWYSG_SHIRT,
-    frontOfShirt: FRONT_OF_SHIRTS,
-    description:
-      "Introducing our premium oversized box tee, crafted from 100% cotton for unparalleled comfort. Designed with street wear in mind, it features a high ribbed neck and slouched shoulders for a relaxed fit. The tee boasts both puff and screen print detailing perfect for a night out stargazing",
-  },
-  "2": {
-    itemUuid: "2",
-    name: "STRGZE OG TEE",
-    price: 45,
-    backOfShirt: HEART_SHIRT,
-    frontOfShirt: FRONT_OF_SHIRTS,
-    description:
-      "Premium oversized box tee, includes puff and screen print. designed in mind for anyone trying to rizz up that special someone",
-  },
-};
-
 const CatalogueItem = () => {
   const [searchParams] = useSearchParams();
   const itemUuid = searchParams.get("item");
 
   const navigate = useNavigate();
 
-  const [item, setItem] = useState<Item | null>(null);
+  const [item, setItem] = useState<ItemBeanie | ItemShirt | null>(null);
   const [image, setImage] = useState([true, false]);
   const [size, setSize] = useState<string>("medium");
 
@@ -67,14 +32,28 @@ const CatalogueItem = () => {
     if (itemUuid === null) {
       return navigate("/404");
     }
-    if (itemUuid !== "1" && itemUuid !== "2") {
+
+    if (
+      itemUuid !== "1" &&
+      itemUuid !== "2" &&
+      itemUuid !== "3" &&
+      itemUuid !== "4"
+    ) {
       return navigate("/404");
     }
 
-    document.title = `${itemsInComponent[itemUuid].name} | STRGZE`;
+    document.title = `${ITEMS[itemUuid].name} | STRGZE`;
 
-    setItem(itemsInComponent[itemUuid]);
+    setItem(ITEMS[itemUuid]);
   }, []);
+
+  const returnColorFromUuid = (id: string, size: string) => {
+    if (ITEMS[id].type === "beanie") {
+      return ITEMS[id].color;
+    } else {
+      return size;
+    }
+  };
 
   return (
     <>
@@ -84,51 +63,73 @@ const CatalogueItem = () => {
         <>
           <div className="Item">
             <div className="Item__Left">
-              {image[0] ? (
-                <>
-                  <AnimatePresence mode="wait">
-                    <motion.div
-                      initial={{ opacity: 0, x: -50 }}
-                      animate={{ opacity: 1, x: 0 }}
-                      exit={{ opacity: 0, x: 50 }}
-                      transition={{ duration: 0.3 }}
-                      key={"1"}
-                    >
-                      <img src={item.backOfShirt} alt="" />
-                    </motion.div>
-                  </AnimatePresence>
-                </>
-              ) : (
-                <>
-                  <AnimatePresence mode="wait">
-                    <motion.div
-                      initial={{ opacity: 0, x: -50 }}
-                      animate={{ opacity: 1, x: 0 }}
-                      exit={{ opacity: 0, x: 50 }}
-                      transition={{ duration: 0.3 }}
-                      key={"2"}
-                    >
-                      <img src={item.frontOfShirt} alt="" />
-                    </motion.div>
-                  </AnimatePresence>
-                </>
-              )}
+              {(() => {
+                if (item.type === "shirt") {
+                  if (image[0]) {
+                    return (
+                      <AnimatePresence mode="wait">
+                        <motion.div
+                          initial={{ opacity: 0, x: -50 }}
+                          animate={{ opacity: 1, x: 0 }}
+                          exit={{ opacity: 0, x: 50 }}
+                          transition={{ duration: 0.3 }}
+                          key={"1"}
+                        >
+                          <img src={item.img} alt="" />
+                        </motion.div>
+                      </AnimatePresence>
+                    );
+                  } else {
+                    return (
+                      <AnimatePresence mode="wait">
+                        <motion.div
+                          initial={{ opacity: 0, x: -50 }}
+                          animate={{ opacity: 1, x: 0 }}
+                          exit={{ opacity: 0, x: 50 }}
+                          transition={{ duration: 0.3 }}
+                          key={"2"}
+                        >
+                          <img src={item.img2} alt="" />
+                        </motion.div>
+                      </AnimatePresence>
+                    );
+                  }
+                } else if (item.type === "beanie") {
+                  return (
+                    <AnimatePresence mode="wait">
+                      <motion.div
+                        initial={{ opacity: 0, x: -50 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        exit={{ opacity: 0, x: 50 }}
+                        transition={{ duration: 0.3 }}
+                        key={"1"}
+                      >
+                        <img src={item.img} alt="" />
+                      </motion.div>
+                    </AnimatePresence>
+                  );
+                }
+              })()}
 
               <div className="Item__Left__Switcher">
-                <img
-                  src={item.backOfShirt}
-                  alt=""
-                  onClick={() => {
-                    setImage([true, false]);
-                  }}
-                />
-                <img
-                  src={item.frontOfShirt}
-                  alt=""
-                  onClick={() => {
-                    setImage([false, true]);
-                  }}
-                />
+                {item.type === "shirt" ? (
+                  <>
+                    <img
+                      src={item.img}
+                      alt=""
+                      onClick={() => {
+                        setImage([true, false]);
+                      }}
+                    />
+                    <img
+                      src={item.img2}
+                      alt=""
+                      onClick={() => {
+                        setImage([false, true]);
+                      }}
+                    />
+                  </>
+                ) : null}
               </div>
             </div>
 
@@ -138,75 +139,88 @@ const CatalogueItem = () => {
                 <p>{formatCurrency(item.price)}</p>
               </div>
 
-              <div className="Item__Right__Sizes">
-                {items[item.itemUuid as keyof typeof items].stock.small ? (
-                  <motion.button
-                    className={
-                      size === "small" ? "Item__Right__Sizes__ButtonActive" : ""
-                    }
-                    onClick={() => {
-                      setSize("small");
-                    }}
-                    whileTap={{ scale: 0.95 }}
-                  >
-                    SMALL
-                  </motion.button>
-                ) : (
-                  <p>OUT OF STOCK</p>
-                )}
-                {items[item.itemUuid as keyof typeof items].stock.medium ? (
-                  <motion.button
-                    className={
-                      size === "medium"
-                        ? "Item__Right__Sizes__ButtonActive"
-                        : ""
-                    }
-                    onClick={() => {
-                      setSize("medium");
-                    }}
-                    whileTap={{ scale: 0.95 }}
-                  >
-                    MEDIUM
-                  </motion.button>
-                ) : (
-                  <p>OUT OF STOCK</p>
-                )}
-                {items[item.itemUuid as keyof typeof items].stock.large ? (
-                  <motion.button
-                    className={
-                      size === "large" ? "Item__Right__Sizes__ButtonActive" : ""
-                    }
-                    onClick={() => {
-                      setSize("large");
-                    }}
-                    whileTap={{ scale: 0.95 }}
-                  >
-                    LARGE
-                  </motion.button>
-                ) : (
-                  <p>OUT OF STOCK</p>
-                )}
-              </div>
+              {item.type === "shirt" ? (
+                <div className="Item__Right__Sizes">
+                  {item.stock.small ? (
+                    <motion.button
+                      className={
+                        size === "small"
+                          ? "Item__Right__Sizes__ButtonActive"
+                          : ""
+                      }
+                      onClick={() => {
+                        setSize("small");
+                      }}
+                      whileTap={{ scale: 0.95 }}
+                    >
+                      SMALL
+                    </motion.button>
+                  ) : (
+                    <p>OUT OF STOCK</p>
+                  )}
+                  {item.stock.medium ? (
+                    <motion.button
+                      className={
+                        size === "medium"
+                          ? "Item__Right__Sizes__ButtonActive"
+                          : ""
+                      }
+                      onClick={() => {
+                        setSize("medium");
+                      }}
+                      whileTap={{ scale: 0.95 }}
+                    >
+                      MEDIUM
+                    </motion.button>
+                  ) : (
+                    <p>OUT OF STOCK</p>
+                  )}
+                  {item.stock.large ? (
+                    <motion.button
+                      className={
+                        size === "large"
+                          ? "Item__Right__Sizes__ButtonActive"
+                          : ""
+                      }
+                      onClick={() => {
+                        setSize("large");
+                      }}
+                      whileTap={{ scale: 0.95 }}
+                    >
+                      LARGE
+                    </motion.button>
+                  ) : (
+                    <p>OUT OF STOCK</p>
+                  )}
+                </div>
+              ) : null}
 
               <div className="Item__Right__AddToCart">
                 <motion.button
                   onClick={() => {
-                    increaseCartQuantity(itemUuid as any, size);
+                    increaseCartQuantity(
+                      itemUuid as any,
+                      returnColorFromUuid(item.id, size)
+                    );
                     notify();
                   }}
                   whileTap={{ scale: 0.98 }}
                   disabled={
-                    !items[item.itemUuid as keyof typeof items].stock.large &&
-                    !items[item.itemUuid as keyof typeof items].stock.medium &&
-                    !items[item.itemUuid as keyof typeof items].stock.small
-                      ? true
-                      : true
+                    item.type === "shirt"
+                      ? !item.stock.large &&
+                        !item.stock.medium &&
+                        !item.stock.small
+                        ? true
+                        : false
+                      : false
                   }
                   style={
-                    !items[item.itemUuid as keyof typeof items].stock.large &&
-                    !items[item.itemUuid as keyof typeof items].stock.medium &&
-                    !items[item.itemUuid as keyof typeof items].stock.small
-                      ? { background: "grey", cursor: "not-allowed" }
+                    item.type === "shirt"
+                      ? !item.stock.large &&
+                        !item.stock.medium &&
+                        !item.stock.small
+                        ? { background: "grey", cursor: "not-allowed" }
+                        : {}
                       : {}
                   }
                 >
@@ -216,7 +230,11 @@ const CatalogueItem = () => {
 
               <div className="Item__Right__Dropdowns">
                 <Dropdown name="DESCRIPTION" text={item.description} />
-                <Dropdown name="SIZE GUIDE" />
+                <Dropdown
+                  name="SIZE GUIDE"
+                  type={item.type}
+                  sizeGuide={"One Size fits All"}
+                />
                 <Dropdown name="WASH INSTRUCTIONS" />
               </div>
             </div>
@@ -229,12 +247,14 @@ const CatalogueItem = () => {
   );
 };
 
-interface DropdownProps {
+type DropdownProps = {
   name: string;
   text?: string;
-}
+  type?: "shirt" | "beanie";
+  sizeGuide?: string;
+};
 
-const Dropdown = ({ name, text }: DropdownProps) => {
+const Dropdown = ({ name, text, type, sizeGuide }: DropdownProps) => {
   const [showDescription, setShowDescription] = useState<boolean>(false);
 
   return (
@@ -263,21 +283,25 @@ const Dropdown = ({ name, text }: DropdownProps) => {
           >
             {(() => {
               if (name === "SIZE GUIDE") {
-                return (
-                  <>
-                    SMALL <br></br>
-                    Chest: 104CM / 40.9”<br></br>
-                    Length: 65CM / 25.5”<br></br>
-                    <br></br>
-                    MEDIUM<br></br>
-                    Chest: 110CM / 43.3”<br></br>
-                    Length: 69CM / 27.1”<br></br>
-                    <br></br>
-                    LARGE<br></br>
-                    Chest: 116CM / 45.6”<br></br>
-                    Length: 72CM / 28.3”<br></br>
-                  </>
-                );
+                if (type === "shirt") {
+                  return (
+                    <>
+                      SMALL <br></br>
+                      Chest: 104CM / 40.9”<br></br>
+                      Length: 65CM / 25.5”<br></br>
+                      <br></br>
+                      MEDIUM<br></br>
+                      Chest: 110CM / 43.3”<br></br>
+                      Length: 69CM / 27.1”<br></br>
+                      <br></br>
+                      LARGE<br></br>
+                      Chest: 116CM / 45.6”<br></br>
+                      Length: 72CM / 28.3”<br></br>
+                    </>
+                  );
+                } else if (type === "beanie") {
+                  return sizeGuide;
+                }
               }
 
               if (name === "WASH INSTRUCTIONS") {

@@ -3,7 +3,7 @@ import "./bigCart.scss";
 import { CartItem, useShoppingCart } from "../../context/shoppingCartContext";
 import { motion, AnimatePresence } from "framer-motion";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { items } from "../../data/items";
+import { ITEMS } from "../../data/items";
 import { faPlus, faMinus } from "@fortawesome/free-solid-svg-icons";
 import { useNavigate } from "react-router-dom";
 import { formatCurrency } from "../../utils/formatCurrency";
@@ -81,20 +81,16 @@ const BigCartItem = ({ item }: BigCartItemProps) => {
       className="Cart__Item"
     >
       <div className="Cart__Item__Product">
-        <img src={items[item.id.toString() as keyof typeof items].img} alt="" />
+        <img src={ITEMS[item.id.toString()].img} alt="" />
 
         <div className="Cart__Item__Product__Name">
-          <h2>{items[item.id.toString() as keyof typeof items].name}</h2>
+          <h2>{ITEMS[item.id.toString()].name}</h2>
           <p>{item.size.charAt(0).toUpperCase() + item.size.slice(1)}</p>
         </div>
       </div>
 
       <div className="Cart__Item__Price">
-        <p>
-          {formatCurrency(
-            items[item.id.toString() as keyof typeof items].price
-          )}
-        </p>
+        <p>{formatCurrency(ITEMS[item.id.toString()].price)}</p>
       </div>
 
       <div className="Cart__Item__Quantity">
@@ -118,12 +114,7 @@ const BigCartItem = ({ item }: BigCartItemProps) => {
       </div>
 
       <div className="Cart__Item__Total">
-        <p>
-          {formatCurrency(
-            item.quantity *
-              items[item.id.toString() as keyof typeof items].price
-          )}
-        </p>
+        <p>{formatCurrency(item.quantity * ITEMS[item.id.toString()].price)}</p>
       </div>
     </motion.div>
   );
