@@ -308,9 +308,7 @@ const Dropdown = ({ name, text, type, sizeGuide }: DropdownProps) => {
 
               if (name === "WASH INSTRUCTIONS") {
                 return (
-                  <>
-                    WASH MACHINE, DO NOT BLEACH, DO NOT TUMBLE, DO NOT DRY CLEAN
-                  </>
+                  <>HAND WASH, DO NOT BLEACH, DO NOT TUMBLE, DO NOT DRY CLEAN</>
                 );
               }
 
